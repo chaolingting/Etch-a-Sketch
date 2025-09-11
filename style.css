@@ -4,29 +4,32 @@
     padding: 0;
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 40px;
 
+}
 
 .grid{
     display:flex;
     flex-wrap: wrap;
-    width: 100%;
-    max-width: 500px;
-    height: 500px;
+    aspect-ratio: 1 / 1;
     border: 1px solid gray;
-    
+    width: 960px;
 }
 
-.cell-box{
+/*.cell-box{
     display:flex;
     flex-wrap: wrap;
     width: calc(100% / 4);
     height: calc(100% / 4);
-    /*border: 1px solid gray;*/
-}
+    border: 1px solid gray;
+}*/
 
 .cell{
-    width: calc(100% / 4);
-    height: calc(100% / 4);
     border: 1px solid gray;
+    
+
     
 }
