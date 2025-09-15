@@ -1,22 +1,28 @@
+:root{
+    font-size: 15px;
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    
 }
 
 .container{
     display: flex;
     justify-content: center;
     margin: 40px;
-
+    
 }
 
 .grid{
     display:flex;
     flex-wrap: wrap;
     aspect-ratio: 1 / 1;
-    border: 1px solid gray;
-    width: 960px;
+    border: 1px solid rgb(120, 120, 120);
+    flex-direction: row;
+    width: 100%;
 }
 
 /*.cell-box{
@@ -28,8 +34,31 @@
 }*/
 
 .cell{
-    border: 1px solid gray;
+    border: 1px solid rgb(120,120,120);
+    color: p
     
+}
 
-    
+.opacity{
+opacity: 0;
+
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+button{
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+}
+
+button:hover{
+    background-color: gainsboro;
+
 }

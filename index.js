@@ -1,57 +1,102 @@
 const container = document.querySelector(".container");
+let gridDiv = document.createElement("div");
+gridDiv.classList.add("grid");
+container.appendChild(gridDiv);
+
+gridDiv.style.width = "500px"
+
+//3 buttons
 const changeBtn = document.querySelector(".change")
 const clearBtn = document.querySelector(".clear")
-//const colorPicker = document.getElementById("colorpicker")
-const randomColor = document.querySelector(".random-color")
-
-
-let grid = document.createElement("div");
-grid.classList.add("grid");
-container.appendChild(grid);
-
-
-let currentColor = "black";
-
-//clear drawing
-clearBtn.addEventListener("click", function(){
-    const cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => {
-        cell.style.backgroundColor = "white";
-    });
-})
+const colorBtn = document.querySelector(".random-color")
 
 
 
-//current size
-let squarePerSide = 16
 
-for(let i = 0; i < squarePerSide * squarePerSide; i ++){
-    let cell = document.createElement("div");
-    cell.classList.add("cell");
-    cell.style.flex = `0 0 calc(100% / ${squarePerSide})`;
-    cell.addEventListener('mouseenter', () => {
-        cell.style.backgroundColor = currentColor;
-    })
-    grid.appendChild(cell)
+let cell = 16;
+changeGrid(cell);
 
+function changeGrid(cell){
+        for(let i = 0; i < cell * cell; i ++){
+                let cellDiv = document.createElement("div");
+                cellDiv.classList.add("cell");
+                gridDiv.appendChild(cellDiv);
+                
+                cellDiv.style.flex = `0 0 calc(100% / ${cell})`
+                cellDiv.style.aspectRatio = "1/1"
+                cellDiv.style.backgroundColor = "white"
+                
+                cellDiv.addEventListener("mouseenter",() => {
+                    cellDiv.style.backgroundColor = "black";
+                    
+
+                })
+
+                clearBtn.addEventListener("click", () => {
+                cellDiv.style.backgroundColor = "white";
+                })
+
+                colorBtn.addEventListener("click", () => {
+                    cellDiv.addEventListener("mouseenter", () =>{
+                        cellDiv.style.backgroundColor = randomColor(colors);
+                        })
+                })
+
+                
+        }
 }
 
 
-//change size prompt
-changeBtn.addEventListener("click", 
-    function changeGrid(){
-    const squarePerSide = prompt("Change cell size of the grid");
-    if (squarePerSide){
-    grid.style.width = `${squarePerSide}px`
-    }
-    
-});
+changeBtn.addEventListener("click", ()=>{
+        let newGrid = prompt("change grid? please enter a number, max 100")
+        newGrid = parseInt(newGrid)
+
+        if (!isNaN(newGrid) && newGrid > 0) {
+            cell = newGrid;
+            gridDiv.replaceChildren();
+            changeGrid(cell)
+        } else {
+            alert("please enter numbers")
+        }
+    })
 
 
-//colorPicker.addEventListener("input", ()=>{
-//    currentColor = colorPicker.value;
-//})
+const colors = [
+    "red", 
+    "pink",  
+    "orange", 
+    "yellow", 
+    "green", 
+    "blue", 
+    "purple",
+     "slategray",
+     "olivegreen",
+     "white",
+     "salmon",
+     "skyblue",
+     "brown",
+     "hotpink",
+     "yellowgreen",
+     "magenta",
+     "silver",
+     "silvergray",
+     "coral",
+     "lightblue",
+     "rebeccapurple",
+     "royalblue",
+     "olive",
+     "palegreen",
+     "palegoldenrod",
+     "aqua",
+     "gainsboro"
 
 
+]
+
+function randomColor(colors){
+    let index = Math.floor(Math.random() * colors.length)
+    return colors[index];
+
+}
 
 
