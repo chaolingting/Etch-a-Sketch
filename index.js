@@ -26,9 +26,9 @@ function changeGrid(cell){
                 cellDiv.style.aspectRatio = "1/1"
                 cellDiv.style.backgroundColor = "white"
                 
+               
                 cellDiv.addEventListener("mouseenter",() => {
                     cellDiv.style.backgroundColor = "black";
-                    
 
                 })
 
